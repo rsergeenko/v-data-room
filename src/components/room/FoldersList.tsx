@@ -1,3 +1,4 @@
+import { useMemo } from 'react'
 import { Card } from '@/components/ui/card'
 import { Folder as FolderIcon, Pencil, Trash } from 'lucide-react'
 import { Button } from '@/components/ui/button'
@@ -10,6 +11,7 @@ import ConfirmPopover from '@/components/ConfirmPopover'
 interface Props {
   roomId: string
   folders: Array<Folder>;
+  sort?: boolean;
   onRename: (folder: Folder) => void;
   onDeleteFolder: (folderId: string) => void;
 }
@@ -18,15 +20,23 @@ const FoldersList = (props: Props) => {
   const {
     roomId,
     folders,
+    sort = true,
     onRename,
     onDeleteFolder,
   } = props
 
   const navigate = useNavigate()
 
+  const sorted = useMemo(() => {
+    if (!sort) return folders
+    return [...folders].sort((a, b) =>
+      a.name.localeCompare(b.name, undefined, { sensitivity: 'base' })
+    )
+  }, [folders, sort])
+
   return (
     <>
-      {folders.map((folder) => (
+      {sorted.map((folder) => (
         <Card
           key={folder.id}
           className="w-full px-3 py-2 flex flex-row items-center justify-between hover:bg-accent cursor-pointer transition-colors rounded-lg border"

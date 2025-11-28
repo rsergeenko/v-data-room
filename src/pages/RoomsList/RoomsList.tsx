@@ -1,24 +1,19 @@
 import { useEffect, useState } from 'react'
-import { Pencil, Plus, Trash } from 'lucide-react'
-import { useNavigate } from 'react-router-dom'
+import { Plus } from 'lucide-react'
 
-import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { ScrollArea } from '@/components/ui/scroll-area'
-import { Pages } from '@/constants/pages'
 import { useDataroomStore } from '@/store/useDataroomStore'
 import { Skeleton } from '@/components/ui/skeleton'
 import CreateRoomDialog from '@/components/room/CreateRoomDialog'
 import type { Dataroom } from '@/types/models'
 import RenameDialog from '@/components/RenameDialog'
-import ConfirmPopover from '@/components/ConfirmPopover'
+import RoomCard from './RoomCard.tsx'
 
 const RoomsListPage = () => {
   const { rooms, loading, loadRooms, createRoom, deleteRoom, renameRoom } = useDataroomStore()
   const [isCreateRoomDialogOpen, setIsCreateRoomDialogOpen] = useState(false)
   const [editRoom, setEditRoom] = useState<Dataroom | null>(null)
-
-  const navigate = useNavigate()
 
   useEffect(() => {
     loadRooms()
@@ -93,53 +88,11 @@ const RoomsListPage = () => {
           <ScrollArea className="h-full [&_[data-slot=scroll-area-viewport]>div]:block!">
             <div className="min-w-0 space-y-3">
               {rooms.map((room) => (
-                <Card
-                  key={room.id}
-                  className="rounded-2xl py-0"
-                >
-                  <CardContent
-                    className="p-4 py-8 flex justify-between items-center gap-2 cursor-pointer"
-                    onClick={() => navigate(Pages.ROOM_VIEW(room.id))}
-                    role="button"
-                  >
-                    <div className="flex-1 min-w-0 max-w-2/3">
-                      <div className="text-lg font-semibold overflow-hidden text-ellipsis whitespace-nowrap">{room.name}</div>
-                      <div className="text-sm text-muted-foreground">
-                        Created: {new Date(room.createdAt).toLocaleString()}
-                      </div>
-                    </div>
-                    <div className="flex items-center space-x-1 shrink-0">
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        className="hover:bg-muted-foreground hover:text-muted transition-colors"
-                        onClick={(e) => {
-                          e.stopPropagation()
-                          onEditClick(room)
-                        }}
-                      >
-                        <Pencil size={14} />
-                      </Button>
-                      <ConfirmPopover
-                        title="Delete the room?"
-                        description="This room will be permanently removed."
-                        confirmText="Delete"
-                        onConfirm={() => handleDelete(room.id)}
-                      >
-                        <Button
-                          variant="ghost"
-                          size="icon"
-                          className="hover:bg-muted-foreground hover:text-muted transition-colors"
-                          onClick={(e) => {
-                            e.stopPropagation()
-                          }}
-                        >
-                          <Trash size={14}/>
-                        </Button>
-                      </ConfirmPopover>
-                    </div>
-                  </CardContent>
-                </Card>
+                <RoomCard
+                  room={room}
+                  onEdit={onEditClick}
+                  onDelete={handleDelete}
+                />
               ))}
             </div>
           </ScrollArea>
