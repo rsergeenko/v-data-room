@@ -89,6 +89,7 @@ const RoomsListPage = () => {
             <div className="min-w-0 space-y-3">
               {rooms.map((room) => (
                 <RoomCard
+                  key={room.id}
                   room={room}
                   onEdit={onEditClick}
                   onDelete={handleDelete}

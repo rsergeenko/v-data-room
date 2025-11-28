@@ -20,7 +20,6 @@ const RoomCard = (props: Props) => {
 
   return (
     <Card
-      key={room.id}
       className="rounded-2xl py-0"
     >
       <CardContent
