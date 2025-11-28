@@ -9,7 +9,7 @@ Public URL: https://v-data-room.onrender.com/
 A production-ready mini Data Room implementation.
 This SPA supports nested folders, PDF uploads, renaming, deletion, previewing files, and deep navigation — all fully offline using IndexedDB persistence.
 
-<video src="https://github.com/user-attachments/assets/fc9ef3c8-16c3-463b-988f-0e93db0fcf49" controls></video>
+<video src="https://github.com/user-attachments/assets/04726405-0477-4b38-b440-e748447fc8bf" controls></video>
 
 ## Tech Stack
 
