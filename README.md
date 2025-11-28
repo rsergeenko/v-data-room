@@ -128,5 +128,6 @@ Although the implemented scope matches the requirements of the assignment, the a
 * comments/annotations
 * file previews and thumbnails, PDF reader
 * real backend API integration
+* adding tests (unit, integration, e2e)
 
 Thanks to clean separation between storage, state, and UI, these features can be added with minimal refactoring.
