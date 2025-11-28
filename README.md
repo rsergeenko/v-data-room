@@ -1,5 +1,9 @@
 # V-Dataroom
 
+Public URL: https://v-data-room.onrender.com/
+
+*Note: This is a free instance and it will spin down with inactivity, which can delay requests by 50 seconds or more.*
+
 ## About The Project
 
 A production-ready mini Data Room implementation.
