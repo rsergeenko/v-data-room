@@ -5,7 +5,7 @@
 A production-ready mini Data Room implementation.
 This SPA supports nested folders, PDF uploads, renaming, deletion, previewing files, and deep navigation — all fully offline using IndexedDB persistence.
 
-<video src="https://github.com/user-attachments/assets/31bd6a7b-c344-4533-b1e6-b85872dfb352" controls></video>
+<video src="https://github.com/user-attachments/assets/fc9ef3c8-16c3-463b-988f-0e93db0fcf49" controls></video>
 
 ## Tech Stack
 
