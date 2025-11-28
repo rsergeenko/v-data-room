@@ -29,7 +29,7 @@ const RoomCard = (props: Props) => {
         role="button"
       >
         <div className="flex-1 min-w-0 max-w-2/3">
-          <div className="text-lg font-semibold overflow-hidden text-ellipsis whitespace-nowrap">{room.name}</div>
+          <div className="text-lg font-semibold truncate">{room.name}</div>
           <div className="text-sm text-muted-foreground">
             Created: {new Date(room.createdAt).toLocaleString()}
           </div>

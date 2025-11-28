@@ -38,7 +38,7 @@ const FilesList = (props: Props) => {
           onClick={() => onOpenFile(file.id)}
         >
           <div className="flex items-center gap-3 flex-1 min-w-0">
-            <File size={18} className="text-muted-foreground" />
+            <File size={18} className="text-muted-foreground shrink-0" />
             <span
               className="text-sm truncate"
               title={file.name}
